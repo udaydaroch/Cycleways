@@ -1,0 +1,51 @@
+/* Table related CSS */
+
+/* Pane CSS */
+/*.tableMasterPane {*/
+/*    -fx-border-width: ;*/
+/*    -fx-border-color: E8E8EB;*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+.tablePane {
+    -fx-border-width: 15px 15px 15px 15px;
+    -fx-border-color: E8E8EB;
+}
+
+
+/* Minimise button CSS */
+.min-button {
+    -fx-background-color: white;
+    -fx-text-fill: #3C3C3C;
+    -fx-font-size: 15px;
+    -fx-font-weight: Bold;
+}
+
+.min-button:hover {
+    -fx-text-fill: #44B838;
+}
+
+.filter-header {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 5 0px;
+}
+.resultsDescriptionLabel {
+    -fx-padding: 15;
+}
+
+.header {
+    -fx-text-fill: #000000;
+    -fx-font-size: 24px;
+    -fx-font-family: "Roboto";
+}
+
+.paneLine {
+    -fx-background-color: black;
+}
+
+.column-check-box {
+    -fx-body-color: green;
+}

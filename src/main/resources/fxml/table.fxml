@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane style="-fx-background-color: #FFFFFF;" styleClass="tablePane" stylesheets="@/css/table.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team3.gui.TableController">
+   <children>
+      <VBox layoutY="-4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <TableView fx:id="crashTableView" VBox.vgrow="ALWAYS">
+            <columns>
+            </columns>
+         </TableView>
+         <HBox alignment="TOP_CENTER" prefHeight="0.0">
+            <children>
+               <Button fx:id="paginationJumpToStartButton" mnemonicParsing="false" onAction="#paginationJumpToStart" text="&lt;&lt;">
+                  <HBox.margin>
+                     <Insets top="2.5" />
+                  </HBox.margin>
+               </Button>
+               <Pagination fx:id="pagination" />
+               <Button fx:id="paginationJumpToEndButton" mnemonicParsing="false" onAction="#paginationJumpToEnd" text="&gt;&gt;">
+                  <HBox.margin>
+                     <Insets top="2.5" />
+                  </HBox.margin>
+               </Button>
+            </children>
+         </HBox>
+      </VBox>
+      <AnchorPane prefHeight="50.0" prefWidth="418.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="resultsDescriptionLabel" layoutX="-9.0" layoutY="19.0" maxHeight="50.0" text="0 Results" AnchorPane.topAnchor="19.0" styleClass="resultsDescriptionLabel">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="tableSizeComboBox" layoutX="271.0" layoutY="28.0" maxHeight="30.0" prefHeight="30.0" prefWidth="145.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="28.0" />
+         </children>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</AnchorPane>

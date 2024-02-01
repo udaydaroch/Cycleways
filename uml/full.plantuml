@@ -1,0 +1,211 @@
+@startuml full
+top to bottom direction
+skinparam backgroundcolor transparent
+
+package DAO as dao_pkg {
+  abstract class DAO<T>
+  class CrashDAO
+  class RouteDAO
+  class GraphDAO
+
+  abstract class QueryBuilder<T>
+}
+
+/' -- connections in DAO package '/
+DAO <|-- CrashDAO : <<bind>>\n<T -> Crash>
+DAO <|-- RouteDAO : <<bind>>\n<T -> Route>
+DAO <|-- GraphDAO : <<bind>>\n<T -> Graph>
+
+DAO -> QueryBuilder
+
+/' -- methods and fields for DAO package '/
+
+/' DAO '/
+DAO : +add(T toAdd): int
+DAO : +addBatch(List<T> batch): void
+DAO : +delete(int id): int
+DAO : +update(T toUpdate): int
+DAO : {abstract} +getTFromResult(ResultSet resultSet): T
+DAO : +query(): QueryBuilder<T>
+
+/' CrashDAO '/
+CrashDAO : +getAttributes(String attribute): List<String>
+
+/' QueryBuilder '/
+QueryBuilder : -table: String
+QueryBuilder : -order: List<String>
+QueryBuilder : -conditions: List<String>
+QueryBuilder : -conditionParams: List<String>
+QueryBuilder : -pageLimit: int
+QueryBuilder : +QueryBuilder(String tableName)
+QueryBuilder : +filterEqual(String column, String value): QueryBuilder<T>
+QueryBuilder : +filterEqual(String column, Number value): QueryBuilder<T>
+QueryBuilder : +fitlerNonZero(String column): QueryBuilder<T>
+QueryBuilder : +filterNonZero(List<String> column): QueryBuilder<T>
+QueryBuilder : +filterBetween(String column, String start, String end): QueryBuilder<T>
+QueryBuilder : +filterBetween(String column, Number low, Number high): QueryBuilder<T>
+QueryBuilder : +filterIn(String column, List<String> values, Boolean not): QueryBuilder<T>
+QueryBuilder : +filterIn(String column, List<String> values): QueryBuilder<T>
+QueryBuilder : +filterInOrOther(String column, List<String> valuesWithOther): QueryBuilder<T>
+QueryBuilder : +filterInColumn(String value, List<String> columns): QueryBuilder<T>
+
+QueryBuilder : +sort(String column, Boolean reverse): QueryBuilder<T>
+QueryBuilder : +clone(): QueryBuilder<T>
+QueryBuilder : +clear(): QueryBuilder<T>
+
+QueryBuilder : +getPageCount(Integer pageSize): Integer
+QueryBuilder : +getPageCount(): Integer
+QueryBuilder : +getPageString(Integer pageNumber, Integer pageSize): String
+QueryBuilder : +getPageString(Integer pageNumber): String
+QueryBuilder : +getAllString(): String
+QueryBuilder : +getAllCountString(): String
+QueryBuilder : +getAll(): List<T>
+QueryBuilder : +getPage(Integer pageNumber, Integer pageSize): List<T>
+QueryBuilder : +getPage(Integer pageNumber): List<T>
+QueryBuilder : +getAllCount(): Integer
+
+QueryBuilder : -getWhereString(): String
+QueryBuilder : -getOrderByString(): String
+QueryBuilder : -getResults(String sql): List<T>
+QueryBuilder : {abstract} -getTFromResult(ResultSet resultSet): T
+
+package Model as model_pkg {
+  class Crash
+  class Graph
+  class Route
+  enum Severity
+}
+
+/' -- connections in model_pkg '/
+Crash -> Severity
+
+/' -- methods and fields in model_pkg '/
+/' Severity '/
+Severity : NULL
+Severity : NON_INJURY
+Severity : MINOR_INJURY
+Severity : SERIOUS_INJURY
+Severity : +Severity(String textualSeverity)
+Severity : -textualSeverity: String
+Severity : +toString(): String
+Severity : +toInt(): Integer
+Severity : {static} +fromString(String textualSeverity): Severity
+Severity : {static} +fromInt(Integer value): Severity
+
+/' Crash '/
+Crash : -id: Integer
+Crash : -bicycle: Integer
+Crash : -bus: Integer
+Crash : -carStationWagon: Integer
+Crash : -moped: Integer
+Crash : -motorcycle: Integer
+Crash : -schoolBus: Integer
+Crash : -suv: Integer
+Crash : -taxi: Integer
+Crash : -truck: Integer
+Crash : -vanOrUtility: Integer
+Crash : -otherVehicleType: Integer
+Crash : -crashLocationA: String
+Crash : -crashLocationB: String
+Crash : -region: String
+Crash : -tlaName: String
+Crash : -lng: float
+Crash : -lat: float
+Crash : -crashSeverity: Severity
+Crash : -crashYear: Integer
+Crash : -fatalInjuryCount: Integer
+Crash : -minorInjuryCount: Integer
+Crash : -light: String
+Crash : -weather: String
+Crash : -speedLimit: Integer
+Crash : -roadSurface: String
+Crash : -roadCharacter: String
+Crash : -roadLane: Integer
+Crash : -numberOfLanes: Integer
+
+/' -- connections from dao_pkg to model_pkg '/
+CrashDAO --> Crash
+RouteDAO --> Route
+GraphDAO --> Graph
+
+package GUI as gui_pkg {
+  class MainWindow
+  abstract class Controller
+  class LayoutController
+  class TableController
+  class MapController
+  class GraphController
+}
+
+/' -- connections in gui_pkg '/
+LayoutController --> TableController
+LayoutController --> GraphController
+LayoutController --> MapController
+
+Controller <|-- TableController
+Controller <|-- GraphController
+Controller <|-- MapController
+
+MainWindow -> LayoutController
+
+
+/' members of gui_pkg '/
+/' MainController '/
+MainWindow : +start(Stage primaryStage): void
+MainWindow : {static} +main(String[] args): void
+
+/' Controller '/
+Controller : +showWarning(String message): void
+
+/' LayoutController '/
+LayoutController : +preLoad(String fileNmae): void
+LayoutController : +changeTo(String fileName): void
+LayoutController : +changeToGraph(): void
+LayoutController : +changeToMap(): void
+LayoutController : +changeToTable(): void
+LayoutController : -load(String fileName): Parent
+LayoutController : -updateButtonStyles(String currentScene): void
+
+/' TableController '/
+TableController : -pageNum: Integer
+TableController : -currentQueryProperty: SimpleObjectProperty<QueryBuilder<Crash>>
+TableController : -crashDAO: CrashDAO
+TableController : -tableData: ObservableList<Crash>
+
+TableController : -pagination: Pagination
+TableController : -yearSlider: RangeSlider
+
+TableController : +initialize(): void
+TableController : -initializePagination(): void
+TableController : -initializeTableView(): void
+TableController : -initializeYearSlider(): void
+TableController : -resetYearSlider(): void
+TableController : -initializeFilterCheckBox(String attribute): void
+TableController : -addTableColumn(String attributeName): void
+TableController : -removeTableColumn(String attributeName): void
+TableController : -pageChange(): void
+TableController : -queryChange(): void
+TableController : +applyFilters(): void
+
+/' MapWindow '/
+MapController : -yearSlider: RangeSlider
+MapController : -crashDAO: CrashDAO
+MapController : -query: QueryBuilder<Crash>
+
+MapController : +initalize(): void
+MapController : -initalizeMap(): void
+MapController : +handleRefresh(ActionEvent event): void
+MapController : -setupView(): void
+MapController : -displayRoute(Route newRoute): void
+MapController : -clearRoute(): void
+
+/' connections between dao_pkg and gui_pkg '/
+CrashDAO <-- TableController
+CrashDAO <-- MapController
+
+/' connections between model_pkg and gui_pkg '/
+Crash <-- TableController
+
+App --> MainWindow
+App : +main(String[] args): void
+@enduml

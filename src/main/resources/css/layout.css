@@ -1,0 +1,201 @@
+/* General CSS styling */
+/*Checkbox CSS */
+.check-box {
+    -fx-font-size: 15px;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #3C3C3C;
+    -fx-padding: -1px;
+}
+
+.check-box:hover .box {
+    -fx-border-color: #44B838;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: black;
+}
+
+.check-box:selected .box {
+    -fx-border-color: #44B838;
+}
+
+
+/*RangeSlider CSS*/
+.range-slider .range-bar {
+    -fx-background-color: #44B838;
+}
+
+.range-slider {
+    -fx-focus-color: #44B838;
+}
+
+
+/*TextField CSS*/
+.text-field {
+    -fx-focus-color: #44B838;
+    -fx-faint-focus-color: transparent;
+}
+
+
+/*ScrollPane CSS*/
+.scroll-pane {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+/*Pagination CSS*/
+.pagination .pagination-control .toggle-button {
+    -fx-border-color: transparent;
+}
+
+.pagination .pagination-control .toggle-button:selected {
+    -fx-background-color: #44B838;
+    -fx-text-fill: #000000;
+}
+
+.pagination .pagination-control .toggle-button:hover {
+    -fx-border-color: #44B838;
+}
+
+
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 10 10 10 10px;
+}
+
+-table-row-cell {
+    -fx-padding: 5px 5px 5px 5px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #44B838;
+    -fx-background-radius: 2px;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+
+
+/* Navbar related CSS */
+#navToolBar {
+    -fx-background-color: white;
+}
+
+#CycleWays {
+    -fx-text-fill: #44B838;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+#RightPadding {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+.navbar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3C3C3C;
+    -fx-font-size: 24px;
+}
+
+.navbar-button:hover {
+    -fx-text-fill: #44B838;
+}
+
+.selected-button {
+    -fx-text-fill: #44B838;
+    -fx-border-width: 2px 0 0 0;
+    -fx-border-color: #44B838;
+}
+
+/* Filters related CSS */
+/* Minimise button CSS */
+.filter-pane {
+    -fx-border-width: 15px 0px 15px 15px;
+    -fx-border-color: E8E8EB;
+        -fx-background-color: white;
+}
+
+.min-button {
+    -fx-background-color: white;
+    -fx-text-fill: #3C3C3C;
+    -fx-font-size: 15px;
+    -fx-font-weight: Bold;
+    -fx-padding: 10 0 5 0px;
+}
+
+.min-button:hover {
+    -fx-text-fill: #44B838;
+}
+
+.filter-header {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 5 0px;
+}
+.info-header {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+
+}
+.info-circle {
+    -fx-fill: #44B838;
+}
+
+.header {
+    -fx-text-fill: #000000;
+    -fx-font-size: 24px;
+    -fx-font-family: "Roboto";
+}
+
+.paneLine {
+    -fx-background-color: black;
+}
+
+.apply-filters, .collapse-btn {
+    -fx-background-color: #44B838;
+    -fx-border-width:  2 2 2 2px;
+    -fx-border-color: #44B838;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-padding: 4 4 4 4px;
+}
+
+.apply-filters:hover, .collapse-btn:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #44B838;
+    -fx-text-fill: #44B838;
+}
+
+
+.collapse-btn {
+    -fx-font-size: 12px;
+    -fx-padding: 1 1 1 1px;
+}
+
+.combo-box-base {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
+}

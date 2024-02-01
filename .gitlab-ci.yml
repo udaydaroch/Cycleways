@@ -1,0 +1,42 @@
+junit_and_cucumber:
+  stage: test
+  script:
+    - ./gradlew check
+  coverage: '/.*Instruction Coverage: ([0-9.]+)%/'
+  only:
+    - merge_requests
+    - branches
+  except:
+    - schedules
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
+
+generate_artifacts:
+  stage: deploy
+  only:
+    - main
+    - merge_requests
+  script:
+    - ./gradlew clean jar
+    - chmod +x ./build/libs/seng202_team*.jar
+    - java -jar ./build/libs/seng202_team*.jar load ./crash_data.csv
+    - cp -r build/libs/ cycle_ways/
+  artifacts:
+    name: "cycle_ways_$CI_COMMIT_SHORT_SHA"
+    paths:
+      - cycle_ways/
+
+build_javadoc:
+  stage: deploy
+  script:
+    - ./gradlew javadoc
+  only:
+    - main
+    - merge_requests
+  except:
+    - schedules
+  artifacts:
+    paths:
+      - build/docs/javadoc/

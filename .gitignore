@@ -1,0 +1,22 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Build artefacts
+build/
+bin/
+
+# Gradle
+.gradle/
+
+*.csv
+
+out/

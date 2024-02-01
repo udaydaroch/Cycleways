@@ -1,0 +1,6 @@
+@startuml full_class_no_members
+!include full.plantuml
+
+remove dao_pkg
+remove model_pkg
+@enduml

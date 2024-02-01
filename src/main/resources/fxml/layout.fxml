@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.*?>
+
+<BorderPane fx:id="borderPane" style="-fx-background-color: E8E8EB;" stylesheets="@/css/layout.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team3.gui.LayoutController">
+  <top>
+    <ToolBar fx:id="navToolBar" prefHeight="50" BorderPane.alignment="CENTER">
+      <items>
+        <Pane HBox.hgrow="ALWAYS">
+          <Label fx:id="CycleWays" text="CycleWays" />
+        </Pane>
+        <Button fx:id="tableButton" mnemonicParsing="false" onAction="#changeToTable" styleClass="navbar-button" text="Table" />
+        <Button fx:id="mapButton" mnemonicParsing="false" onAction="#changeToMap" styleClass="navbar-button" text="Map" />
+        <Pane HBox.hgrow="ALWAYS">
+          <Label fx:id="RightPadding" text="CycleWays" />
+        </Pane>
+      </items>
+    </ToolBar>
+  </top>
+  <left>
+    <HBox alignment="CENTER_LEFT">
+      <ScrollPane fx:id="filterPane" maxWidth="265.0" minWidth="265.0" prefHeight="490.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" styleClass="filter-pane">
+        <content>
+          <VBox fx:id="vboxFilters" maxWidth="200.0" style="-fx-background-color: #FFFFFF;">
+            <children>
+              <VBox fx:id="vboxPageUnique">
+              </VBox>
+              <Label alignment="CENTER" contentDisplay="CENTER" styleClass="header" text="Filters">
+                <font>
+                  <Font name="Roboto" size="24.0" />
+                </font>
+                <VBox.margin>
+                  <Insets top="10.0" />
+                </VBox.margin>
+              </Label>
+              <Line endX="200.0" />
+
+              <Button fx:id="applyBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#applyFilters" prefWidth="200.0" styleClass="apply-filters" text="APPLY ALL FILTERS">
+                <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+              </Button>
+              <Button fx:id="restBtn" contentDisplay="CENTER" layoutX="25.0" layoutY="99.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefWidth="200.0" styleClass="apply-filters" text="RESET FILTERS">
+                        <VBox.margin>
+                           <Insets bottom="10.0" />
+                        </VBox.margin></Button>
+              <Line endX="200.0" />
+              <CheckBox fx:id="bikeOnlyCheckBox" mnemonicParsing="false" prefHeight="51.0" prefWidth="201.0" text="Bicycle Crashes Only" />
+              <Line endX="200.0" />
+              <Label contentDisplay="CENTER" layoutX="10.0" layoutY="55.0" lineSpacing="1.0" styleClass="filter-header" text="Road">
+                <VBox.margin>
+                  <Insets />
+                </VBox.margin>
+                <font>
+                  <Font name="Roboto Bold" size="15.0" />
+                </font>
+              </Label>
+              <TextField fx:id="roadSearchTextField" layoutX="10.0" layoutY="75.0">
+                <VBox.margin>
+                  <Insets bottom="10.0" />
+                </VBox.margin>
+              </TextField>
+              <Line endX="200.0" />
+
+              <Label contentDisplay="CENTER" lineSpacing="1.0" styleClass="filter-header" text="Year">
+                <VBox.margin>
+                  <Insets />
+                </VBox.margin>
+                <font>
+                  <Font name="Roboto Bold" size="15.0" />
+                </font>
+              </Label>
+              <AnchorPane>
+                <children>
+                  <Label fx:id="sliderYearLow" text="2000" textFill="#44b838" AnchorPane.leftAnchor="0.0">
+                    <font>
+                      <Font name="Roboto" size="15.0" />
+                    </font>
+                  </Label>
+                  <Label fx:id="sliderYearHigh" text="2023" textFill="#44b838" AnchorPane.rightAnchor="0.0">
+                    <font>
+                      <Font name="Roboto" size="15.0" />
+                    </font>
+                  </Label>
+                </children>
+              </AnchorPane>
+              <RangeSlider fx:id="yearSlider" highValue="2023.0" highValueChanging="true" lowValue="2000.0" lowValueChanging="true" max="2023.0" min="2000.0">
+                <VBox.margin>
+                  <Insets bottom="10.0" />
+                </VBox.margin>
+              </RangeSlider>
+              <Line endX="200.0" />
+              <Label contentDisplay="CENTER" lineSpacing="1.0" styleClass="filter-header" text="Speed Limit (km/h)">
+                <VBox.margin>
+                  <Insets />
+                </VBox.margin>
+                <font>
+                  <Font name="Roboto Bold" size="15.0" />
+                </font>
+              </Label>
+              <AnchorPane>
+                <children>
+                  <Label fx:id="sliderSpeedLow" text="0" textFill="#44b838" AnchorPane.leftAnchor="0.0">
+                    <font>
+                      <Font name="Roboto" size="15.0" />
+                    </font>
+                  </Label>
+                  <Label fx:id="sliderSpeedHigh" text="110" textFill="#44b838" AnchorPane.rightAnchor="0.0">
+                    <font>
+                      <Font name="Roboto" size="15.0" />
+                    </font>
+                  </Label>
+                </children>
+              </AnchorPane>
+              <RangeSlider fx:id="speedLimitSlider" highValue="110.0" highValueChanging="true" lowValue="0.0" lowValueChanging="true" max="110.0" min="0.0">
+                <VBox.margin>
+                  <Insets bottom="10.0" />
+                </VBox.margin>
+              </RangeSlider>
+              <Line endX="100.0" startX="-100.0" />
+              <AnchorPane>
+                <children>
+                           <AnchorPane AnchorPane.leftAnchor="0.0">
+                              <children>
+                        <Label styleClass="filter-header" text="Vehicles Involved">
+                          <font>
+                            <Font name="Roboto Bold" size="15.0" />
+                          </font>
+                        </Label>
+                              </children>
+                           </AnchorPane>
+                  <Button fx:id="vehicleMin" mnemonicParsing="false" styleClass="min-button" text="-" AnchorPane.rightAnchor="0.0" />
+                           <Circle fill="#44b838" layoutX="129.5" layoutY="10.0" radius="7.5" stroke="#44b838" strokeType="INSIDE" AnchorPane.topAnchor="12.55" />
+                           <Label fx:id="vehicleInfo" layoutX="126.0" layoutY="-5.0" prefHeight="31.0" prefWidth="34.0" text="?" textFill="WHITE" AnchorPane.topAnchor="4.5">
+                              <font>
+                                 <Font name="Roboto" size="13.0" />
+                              </font>
+                           </Label>
+                </children>
+                <VBox.margin>
+                  <Insets />
+                </VBox.margin>
+              </AnchorPane>
+              <CheckBox fx:id="bicycle_Checkbox" mnemonicParsing="false" text="Bicycle" textFill="#3c3c3c">
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+                <font>
+                  <Font size="15.0" />
+                </font>
+              </CheckBox>
+              <CheckBox fx:id="moped_Checkbox" mnemonicParsing="false" text="Moped" textFill="#3c3c3c">
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+                <font>
+                  <Font size="15.0" />
+                </font>
+              </CheckBox>
+              <CheckBox fx:id="motorcycle_Checkbox" mnemonicParsing="false" text="Motorcycle" textFill="#3c3c3c">
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+                <font>
+                  <Font size="15.0" />
+                </font>
+              </CheckBox>
+              <CheckBox fx:id="car_Checkbox" mnemonicParsing="false" text="Car" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="taxi_Checkbox" mnemonicParsing="false" text="Taxi" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="suv_Checkbox" mnemonicParsing="false" text="SUV" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="van_Checkbox" mnemonicParsing="false" text="Van" textFill="#3c3c3c">
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+                <font>
+                  <Font size="15.0" />
+                </font>
+              </CheckBox>
+              <CheckBox fx:id="bus_Checkbox" mnemonicParsing="false" text="Bus" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="schoolBus_Checkbox" mnemonicParsing="false" text="School Bus" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="truck_Checkbox" mnemonicParsing="false" text="Truck" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="5.0" />
+                </VBox.margin>
+              </CheckBox>
+              <CheckBox fx:id="other_Checkbox" mnemonicParsing="false" text="Other" textFill="#3c3c3c">
+                <font>
+                  <Font size="15.0" />
+                </font>
+                <VBox.margin>
+                  <Insets bottom="10.0" />
+                </VBox.margin>
+              </CheckBox>
+            </children>
+
+            <padding>
+              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+          </VBox>
+        </content>
+        <BorderPane.margin>
+          <Insets />
+        </BorderPane.margin>
+      </ScrollPane>
+      <Button fx:id="toggleFilterButton" onAction="#toggleFilterPane" prefHeight="75.0" prefWidth="14.0" styleClass="collapse-btn">
+        <font>
+          <Font name="System Bold" size="9.0" />
+        </font>
+      </Button>
+
+    </HBox>
+  </left>
+</BorderPane>

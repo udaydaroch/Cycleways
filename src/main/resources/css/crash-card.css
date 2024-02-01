@@ -1,0 +1,105 @@
+#crash-card {
+    background: #ffffff;
+    border: 1px solid #00FF00;
+    width: 280px;
+    height: 260px;
+    padding: 30px;
+    padding-left: 20px;
+    padding-right: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: none;
+    z-index: 999;
+    overflow: auto;
+}
+
+.crash-card-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.crash-card-entry {
+    font-family: Roboto;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.crash-card-summary, .crash-card-route-label {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+.crash-card-route-label {
+    margin-bottom: 5px;
+    margin-top: 14px;
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+.crash-card-summary {
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-underline-offset: 1px;
+}
+
+.crash-card-entry span {
+    white-space: nowrap;
+}
+
+.close-button-container {
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+.close-button {
+    background-color: #44B838; /* Change button background color as needed */
+    color: white;
+    border: none;
+    margin-left: 200px;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding: 5px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.close-button:hover {
+    background-color: #2F5623;
+    color: white;
+}
+
+.instructions-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.instructions-list li {
+    padding: 0.5em 0;
+
+}
+
+.crash-card-route-label {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.crash-card-instructions ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.crash-card-instructions li {
+    margin-bottom: 10px;
+}

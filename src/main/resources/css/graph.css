@@ -1,0 +1,10 @@
+SplitPane {
+    -fx-border-width: 15px 15px 15px 15px;
+    -fx-border-color: E8E8EB;
+    -fx-background-color: white;
+}
+
+.tablePane {
+    -fx-border-width: 0 0 0 15px;
+    -fx-border-color: E8E8EB;
+}

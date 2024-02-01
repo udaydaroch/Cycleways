@@ -1,0 +1,13 @@
+.alert {
+    -fx-background-color: #f2f2f2;
+    -fx-font-size: 14px;
+    -fx-border-color: #44B838;
+    -fx-text-fill: black;
+}
+.alert .header-panel .label {
+    -fx-text-fill: black;
+}
+.alert .button-bar .button {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+}

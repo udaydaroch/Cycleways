@@ -1,0 +1,159 @@
+/* Pane CSS */
+.mapMasterPane {
+    -fx-border-width: 15px 15px 15px 15px;
+    -fx-border-color: E8E8EB;
+    -fx-background-color: white;
+}
+
+.map-pane {
+    -fx-border-width: 0 0 0 15px;
+    -fx-border-color: E8E8EB;
+}
+
+HBox {
+    -fx-border-color: #44B838;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.toggle-button {
+    -fx-border-color: #44B838;
+    -fx-border-width: 1;
+    -fx-font-size: 12px;
+    -fx-background-color: white;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border: none;
+    -fx-text-fill: black;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.label-journey-planner {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.label-internet-connection {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+#routeComboBox {
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-background-color: white;
+    -fx-border-color: #44B838;
+}
+
+#routeComboBox:hover {
+    -fx-background-color: white;
+}
+
+#routeComboBox .list-cell {
+    -fx-padding: 5px 10px;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+#routeComboBox .list-cell:hover {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+}
+
+#routeComboBox .list-cell:selected {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+#addRouteButtion {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+}
+
+#addRouteButtion:hover {
+    -fx-background-color: #2F5623;
+}
+
+#removeRouteButtion {
+    -fx-background-color: #37A72B;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+}
+
+#removeRouteButtion:hover {
+    -fx-background-color: #2F5623
+}
+
+#viewButton {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+}
+
+#viewButton:hover {
+    -fx-background-color: #2F5623;
+}
+
+#viewButton, #clearButton {
+    -fx-background-color: #44B838;
+    -fx-text-fill: white;
+}
+
+#viewButton:hover, #clearButton:hover {
+    -fx-background-color: #2F5623;
+}
+
+.pane-no-internet {
+    -fx-background-color: #ffffff; /* white background */
+    -fx-border-color: #44B838; /* green border */
+    -fx-border-width: 4px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+}
+
+.label-no-internet {
+    -fx-text-fill: #000000; /* black text */
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.button-refresh {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff; /* white text */
+    -fx-background-color: #44B838; /* green background */
+    -fx-border-color: #44B838;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.button-refresh:hover {
+    -fx-background-color: #2F5623; /* darker green on hover */
+}
+
+.button-go{
+    -fx-font-size: 11px;
+    -fx-text-fill: #ffffff; /* white text */
+    -fx-background-color: #44B838; /* green background */
+    -fx-background-radius: 5px;
+}
+.button-go:hover {
+    -fx-background-color: #2F5623; /* darker green on hover */
+}

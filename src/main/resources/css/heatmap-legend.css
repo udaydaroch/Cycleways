@@ -1,0 +1,27 @@
+#heatmap-legend {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    z-index: 1000;
+    margin-bottom: 40px;
+    margin-right: 8px;
+    padding: 5px 5px 0;
+    background: white;
+    border: 1px solid #5d5d5d;
+    display: none;
+    border-radius: 5px;
+}
+
+.heatmap-legend-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.heatmap-legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+}

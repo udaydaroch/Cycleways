@@ -1,0 +1,27 @@
+@startuml use case diagram
+
+left to right direction
+
+actor Cyclist as c
+
+rectangle CycleWays {
+  usecase "sort table" as UC1
+  usecase "filter table" as UC2
+  usecase "search table" as UC3
+  usecase "search address on map" as UC4
+  usecase "view crash points on map" as UC5
+  usecase "view heatmap" as UC6
+  usecase "journey plan" as UC7
+  usecase "manage journey plan" as UC8
+}
+
+c --> UC1
+c --> UC2
+c --> UC3
+c--> UC4
+c --> UC5
+c --> UC6
+c --> UC7
+UC7 <.. UC8 : extends
+
+@enduml

@@ -1,0 +1,5 @@
+@startuml full_class_no_members
+!include full.plantuml
+
+hide members
+@enduml

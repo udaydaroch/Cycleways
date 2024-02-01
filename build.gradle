@@ -1,0 +1,154 @@
+plugins {
+    id 'application'
+    id 'java'
+    id "org.openjfx.javafxplugin" version "0.0.14"
+    id 'jacoco'
+    id 'org.barfuin.gradle.jacocolog' version '3.1.0'
+}
+
+archivesBaseName = 'seng202_team3'
+group = 'seng202.team3'
+version = '1.0'
+mainClassName = 'seng202.team3.App'
+
+def javaVersion = '17'
+def javafxVersion = '20.0.1'
+
+sourceCompatibility = "${javaVersion}"
+targetCompatibility = "${javaVersion}"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.openjfx/javafx-controls
+    implementation "org.openjfx:javafx-controls:${javafxVersion}"
+
+    // https://mvnrepository.com/artifact/org.openjfx/javafx-fxml
+    implementation "org.openjfx:javafx-fxml:${javafxVersion}"
+
+    // https://mvnrepository.com/artifact/org.openjfx/javafx-web
+    implementation "org.openjfx:javafx-web:${javafxVersion}"
+
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation 'org.xerial:sqlite-jdbc:3.39.2.1'
+
+    // https://mvnrepository.com/artifact/com.opencsv/opencsv
+    implementation 'com.opencsv:opencsv:5.5.2'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+
+    implementation 'com.google.maps:google-maps-services:0.15.0'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+
+    // https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv
+    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.5.0'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    testImplementation 'io.cucumber:cucumber-java:7.5.0'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    testImplementation "io.cucumber:cucumber-junit:7.5.0"
+
+    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite
+    testImplementation 'org.junit.platform:junit-platform-suite:1.8.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+
+    // https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
+
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+
+    // https://central.sonatype.com/artifact/org.controlsfx/controlsfx/11.1.2
+    implementation 'org.controlsfx:controlsfx:11.1.2'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-text
+    implementation 'org.apache.commons:commons-text:1.4'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = "${mainClassName}"
+}
+
+javafx {
+    version = "${javafxVersion}"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.web' ]
+}
+
+test {
+    useJUnitPlatform()
+
+    filter {
+        includeTestsMatching "seng202.team3.unittests.*"
+    }
+
+    finalizedBy jacocoTestReport
+}
+
+
+tasks.register("cucumber", Test)  {
+    group = "verification"
+
+    useJUnitPlatform()
+
+    filter {
+        includeTestsMatching "seng202.team3.cucumber.*"
+    }
+
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+
+    finalizedBy jacocoTestReport
+}
+
+tasks.named("check") {
+    dependsOn test, cucumber
+
+    finalizedBy jacocoTestReport
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    from {
+        configurations.runtimeClasspath.collect {it.isDirectory()?it:zipTree(it)}
+    }
+}
+
+// Jacoco test coverage config
+jacoco {
+    toolVersion = "0.8.9"
+}
+
+jacocoTestReport {
+    executionData fileTree(project.rootDir) {
+        include '**/*.exec'
+    }
+    reports {
+        html.destination file("${buildDir}/reports/tests/coverage/")
+    }
+}

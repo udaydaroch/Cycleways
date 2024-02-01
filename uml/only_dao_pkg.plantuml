@@ -1,0 +1,7 @@
+@startuml full_class_no_members
+!include full.plantuml
+
+remove App
+remove model_pkg
+remove gui_pkg
+@enduml

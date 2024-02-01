@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<GridPane fx:id="mapMasterPane" styleClass="mapMasterPane" stylesheets="@/css/map.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team3.gui.MapController">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS" />
+    </rowConstraints>
+    <children>
+        <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2">
+            <HBox layoutX="35.0 " layoutY="10.0" prefHeight="76.0" prefWidth="870" spacing="10">
+            <VBox>
+               <children>
+                      <Label styleClass="label-journey-planner" text="Journey Planner" />
+                  <Label styleClass="label-journey-planner" text="Go to address">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="24.0" />
+                     </padding></Label>
+               </children>
+            </VBox>
+
+                <VBox spacing="25">
+                    <ComboBox fx:id="startComboBox" maxWidth="270" prefWidth="270" promptText="Enter starting location" />
+               <ComboBox fx:id="goToComboBox" layoutX="10.0" layoutY="10.0" maxWidth="270" prefWidth="270" promptText="enter an address to go to" />
+                </VBox>
+                <VBox spacing="25">
+                    <ComboBox fx:id="destinationComboBox" maxWidth="270" prefWidth="270" promptText="Enter destination" />
+               <Button fx:id="goBtn" mnemonicParsing="false" onAction="#goToAddress" styleClass="button-go" text="GO" />
+                </VBox>
+
+                <VBox spacing="10">
+                    <Button fx:id="viewButton" onAction="#onClickedView" prefHeight="25.0" prefWidth="54.0" text="View" />
+
+                    <Button fx:id="clearButton" onAction="#removeRouteFromMap" prefHeight="25.0" prefWidth="54.0" text="Clear" />
+                </VBox>
+
+                <ComboBox fx:id="routeComboBox" maxWidth="140" onAction="#selectRoute" prefWidth="140" promptText="My Routes" />
+
+                <Button fx:id="addRouteButtion" onAction="#addSavedRoute" text="Save" />
+
+                <Button fx:id="removeRouteButtion" onAction="#removeSavedRoute" text="Remove" />
+
+                <VBox.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </VBox.margin>
+            </HBox>
+
+            <VBox fx:id="mapParentBox" layoutX="35.0" layoutY="100.0" prefHeight="600.0" prefWidth="875.0" spacing="10" VBox.vgrow="ALWAYS">
+
+                <WebView fx:id="webView" prefWidth="363.0" VBox.vgrow="ALWAYS" />
+
+                <Pane fx:id="noInternetPane" styleClass="pane-no-internet" VBox.vgrow="ALWAYS">
+                    <Label layoutX="300.0" layoutY="300.0" styleClass="label-no-internet" text="No Internet Connection. Please Check Your Connection and Refresh." wrapText="true" />
+                    <Button fx:id="refreshButton" layoutX="400.0" layoutY="350.0" onAction="#handleRefreshButtonAction" styleClass="button-refresh" text="Refresh" />
+                </Pane>
+
+                <VBox.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </VBox.margin>
+            </VBox>
+            <GridPane.margin>
+                <Insets />
+            </GridPane.margin>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </children>
+</GridPane>

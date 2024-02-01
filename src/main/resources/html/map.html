@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaflet & OSM Map Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://www.unpkg.com/@sintef/prune-cluster@2.1.0/dist/LeafletStyleSheet.css">
+    <link rel="stylesheet" href="../css/leaflet.popup.css">
+    <link rel="stylesheet" href="../css/heatmap-legend.css">
+    <link rel="stylesheet" href="../css/crash-card.css">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="crash-card" class="crash-card">
+        <div class="close-button-container">
+            <button class="close-button" onclick="closeCrashCard()">Close Tab</button>
+        </div>
+        <div class="crash-card-content">
+            <div class="crash-card-entry">
+                <span class="crash-card-summary">Route Summary </span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-rating">Route Summary: </span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-distance">Route Distance: 300 miles</span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-duration">Route Duration: 4 hours</span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-elevation">Average Elevation: 120 meters</span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-crashes">Average Crashes: 2 incidents per km</span>
+            </div>
+            <div class="crash-card-entry">
+                <span class="crash-card-calory">Estimated Calories: cal</span>
+            </div>
+            <div class="crash-card-route-label">
+                <span class="crash-card-route-label">Route Instructions:</span>
+            </div>
+            <div class="crash-card-instructions">
+                <span class="crash-card-instructions"></span>
+            </div>
+        </div>
+    </div>
+    <div id="map">
+
+        <div id="heatmap-legend" class="heatmap-legend">
+            <div class="heatmap-legend-entry">
+                <div class="heatmap-legend-color" style="background-color: #f80500;"></div>
+                <span>High Density</span>
+            </div>
+            <div class="heatmap-legend-entry">
+                <div class="heatmap-legend-color" style="background-color: #ff6c16;"></div>
+                <span>Medium-High Density</span>
+            </div>
+            <div class="heatmap-legend-entry">
+                <div class="heatmap-legend-color" style="background-color: #f1f614;"></div>
+                <span>Medium-Low Density</span>
+            </div>
+            <div class="heatmap-legend-entry">
+                <div class="heatmap-legend-color" style="background-color: #6cd722;"></div>
+                <span>Low Density</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="https://www.unpkg.com/@sintef/prune-cluster@2.1.0/dist/PruneCluster.js"></script>
+    <script src="https://unpkg.com/heatmap.js@2.0.5/build/heatmap.min.js"></script>
+    <script src="https://unpkg.com/heatmap.js@2.0.5/plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
+    <script src="../js/map.js"></script>
+</body>
+
+</html>
